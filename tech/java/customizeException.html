@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>【JAVA】自定义异常全局处理 企业微信（微信）token 过期问题 | Popo&#39;s Blog</title>
+    <meta name="description" content="Just Do It !">
+    <link rel="icon" href="/popo706.github.io/favicons.jpg">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/popo706.github.io/assets/css/0.styles.c3ecc9e1.css" as="style"><link rel="preload" href="/popo706.github.io/assets/js/app.1f09ed82.js" as="script"><link rel="preload" href="/popo706.github.io/assets/js/4.ebadb3c7.js" as="script"><link rel="preload" href="/popo706.github.io/assets/js/1.8ddc4372.js" as="script"><link rel="preload" href="/popo706.github.io/assets/js/18.46056c41.js" as="script"><link rel="prefetch" href="/popo706.github.io/assets/js/10.03e7e345.js"><link rel="prefetch" href="/popo706.github.io/assets/js/11.b1571779.js"><link rel="prefetch" href="/popo706.github.io/assets/js/12.c5ab273f.js"><link rel="prefetch" href="/popo706.github.io/assets/js/13.aee4acfc.js"><link rel="prefetch" href="/popo706.github.io/assets/js/14.b1c8ed83.js"><link rel="prefetch" href="/popo706.github.io/assets/js/15.da1e2e90.js"><link rel="prefetch" href="/popo706.github.io/assets/js/16.cb8be065.js"><link rel="prefetch" href="/popo706.github.io/assets/js/17.605ad2ab.js"><link rel="prefetch" href="/popo706.github.io/assets/js/19.85a17289.js"><link rel="prefetch" href="/popo706.github.io/assets/js/2.a3ceb7d3.js"><link rel="prefetch" href="/popo706.github.io/assets/js/20.ba6f31e9.js"><link rel="prefetch" href="/popo706.github.io/assets/js/21.d15a32bb.js"><link rel="prefetch" href="/popo706.github.io/assets/js/22.65142762.js"><link rel="prefetch" href="/popo706.github.io/assets/js/23.994ff2b4.js"><link rel="prefetch" href="/popo706.github.io/assets/js/24.04706717.js"><link rel="prefetch" href="/popo706.github.io/assets/js/5.9e92cf3f.js"><link rel="prefetch" href="/popo706.github.io/assets/js/6.0c4fdb8b.js"><link rel="prefetch" href="/popo706.github.io/assets/js/7.9f16ea97.js"><link rel="prefetch" href="/popo706.github.io/assets/js/8.f1a96583.js"><link rel="prefetch" href="/popo706.github.io/assets/js/9.418ada84.js">
+    <link rel="stylesheet" href="/popo706.github.io/assets/css/0.styles.c3ecc9e1.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div><div class="theme-container"><div><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/popo706.github.io/" class="home-link router-link-active"><!----> <span class="site-name">Popo's Blog</span></a> <div class="links"><div class="color-picker"><a href="#" class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="theme-options"><!----> <div class="dark-theme-options toggle-option"><label for="dark-theme-toggle">Enable Dark Theme?</label> <input id="dark-theme-toggle" type="checkbox" checked="checked"></div></div></div></div> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/popo706.github.io/" class="nav-link"><i class="iconfont reco-home"></i>
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/popo706.github.io/category/技术篇.html" class="nav-link"><i class="iconfont undefined"></i>
+  技术篇
+</a></li><li class="dropdown-item"><!----> <a href="/popo706.github.io/category/文学篇.html" class="nav-link"><i class="iconfont undefined"></i>
+  文学篇
+</a></li></ul></div></div><div class="nav-item"><a href="/popo706.github.io/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/popo706.github.io/timeLine/" class="nav-link"><i class="iconfont reco-date"></i>
+  历史
+</a></div><div class="nav-item"><a href="/popo706.github.io/resume/" class="nav-link"><i class="iconfont reco-account"></i>
+  简历
+</a></div><div class="nav-item"><a href="https://github.com/popo706/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      友情链接
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://fblog.top/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont undefined"></i>
+  老冯
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/popo706.github.io/" class="nav-link"><i class="iconfont reco-home"></i>
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/popo706.github.io/category/技术篇.html" class="nav-link"><i class="iconfont undefined"></i>
+  技术篇
+</a></li><li class="dropdown-item"><!----> <a href="/popo706.github.io/category/文学篇.html" class="nav-link"><i class="iconfont undefined"></i>
+  文学篇
+</a></li></ul></div></div><div class="nav-item"><a href="/popo706.github.io/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/popo706.github.io/timeLine/" class="nav-link"><i class="iconfont reco-date"></i>
+  历史
+</a></div><div class="nav-item"><a href="/popo706.github.io/resume/" class="nav-link"><i class="iconfont reco-account"></i>
+  简历
+</a></div><div class="nav-item"><a href="https://github.com/popo706/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      友情链接
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://fblog.top/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont undefined"></i>
+  老冯
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>【JAVA】自定义异常全局处理 企业微信（微信）token 过期问题</span> <!----></p> <!----></section></li></ul> </aside> <div><main class="page reco-hide"> <div class="page-title"><h1>【JAVA】自定义异常全局处理 企业微信（微信）token 过期问题</h1> <hr> <div data-v-b53d65a4><i class="iconfont reco-account" data-v-b53d65a4><span data-v-b53d65a4>Popo's Blog</span></i> <i class="iconfont reco-date" data-v-b53d65a4><span data-v-b53d65a4>3/7/2020</span></i> <span id="/popo706.github.io/tech/java/customizeException.html" data-flag-title="Your Article Title" class="leancloud-visitors" data-v-2e99e05a data-v-b53d65a4><i class="iconfont reco-eye" style="margin-right: .5rem" data-v-2e99e05a></i> <a class="leancloud-visitors-count" style="font-size:.9rem;font-weight:normal;color:#999;" data-v-2e99e05a></a></span> <i class="iconfont reco-tag tags" data-v-b53d65a4><span class="tag-item" data-v-b53d65a4>
+      java
+    </span></i></div></div> <div class="content__default"><blockquote><p>背景：企业微信第三方应用开发，存在三种token, cropToken(企业级别token),suitToken(应用级别token),providerToken(服务商级别token);
+对于一个服务商而言，问题一：测试环境和生产环境 的 providerToken 会存在竞争关系，问题二：多次请求 providerToken，token未过期时，获取到的数据一样，
+数据结构如ProviderToken 数据结构，
+过期时间一直为 7200s,(ΩДΩ) 但不知道token 何时生效的，所以有效时间0&lt;x&lt;7200s,不知何时过期，所以需要在token 过期时，自动刷新token</p></blockquote> <p>ProviderToken 数据结构：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>{
+    &quot;provider_access_token&quot;:&quot;XXXXXXXXXXXXXXXX&quot;,
+    &quot;expires_in&quot;:7200
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>思路如下：自定义异常，捕获微信或企业微信 特定异常码，全局异常处理器 处理对应异常，实现自动刷新
+例如：企业微信 token 无效 状态码为 40014，invalid access_token</p> <p>处理逻辑如下：
+自定义企业微信请求异常</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>package ky.edu.saas.exception;
+
+import lombok.Data;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+/**
+ * 企业微信api调用的异常封装
+ * errcode 参见：https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1433747234&amp;token=&amp;lang=zh_CN
+ */
+@Data
+@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+public class QYWXAPIAccessException extends RuntimeException {
+
+    /**
+     * 错误码
+     */
+    private String errcode;
+
+    /**
+     * 错误信息
+     */
+    private String errmsg;
+
+    /**
+     * 对应类型，例：crop:ww031b410ce418c708;suit;provider, 其中 crop 包含 需要刷新的 corpId
+     */
+    private String typeString;
+
+    /**
+     * 通过errcode和errmsg构造
+     *
+     * @param errcode    微信返回的errcode
+     * @param errmsg     微信返回errmsg
+     * @param typeString 对应类型，例：crop:ww031b410ce418c708;suit;provider, 其中 crop 包含 需要刷新的 corpId
+     *                   suiteTicket;
+     */
+    public QYWXAPIAccessException(String errcode, String errmsg, String typeString) {
+        super(String.format(&quot;errcode:%s, errmsg:%s&quot;, errcode, errmsg));
+        this.errcode = errcode;
+        this.errmsg = errmsg;
+        this.typeString = typeString;
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br></div></div><p>在请求企业微信时，需要token(无论哪种token）并且请求失败后，抛出此异常；
+然后定义自定义异常处理器，捕获并处理该异常，然后抛出异常</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>package ky.edu.saas.handler;
+
+import ky.edu.saas.datasync.domain.service.CropService;
+import ky.edu.saas.datasync.domain.service.ProviderService;
+import ky.edu.saas.datasync.domain.service.SuiteService;
+import ky.edu.saas.exception.QYWXAPIAccessException;
+import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang.StringUtils;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * 微信api调用的异常封装
+ * errcode参见：https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1433747234&amp;token=&amp;lang=zh_CN
+ */
+@RestControllerAdvice
+@RequiredArgsConstructor
+public class CustomizeExceptionHandler extends RuntimeException {
+
+    private final ProviderService providerService;
+    private final CropService cropService;
+    private final SuiteService suiteService;
+
+    /**
+     * 捕获CustomException
+     *
+     * @param e
+     * @return json格式类型
+     */
+    @ResponseBody
+    @ExceptionHandler({QYWXAPIAccessException.class}) //指定拦截异常的类型
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR) //自定义浏览器返回状态码
+    public ModelAndView customExceptionHandler(QYWXAPIAccessException e) {
+        Map&lt;String, Object&gt; map = new HashMap&lt;&gt;();
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName(&quot;error&quot;);
+        modelAndView.addObject(map);
+
+        String typeString = e.getTypeString();
+        if (e.getErrcode().equals(&quot;40014&quot;) &amp;&amp; StringUtils.isNotBlank(typeString)) {
+            if (typeString.contains(&quot;crop:&quot;)) {
+                cropService.getCropToken(typeString.split(&quot;:&quot;)[1], true);
+            } else if (typeString.equals(&quot;suit&quot;)) {
+                suiteService.getSuiteToken(true);
+            } else if (typeString.equals(&quot;provider&quot;)) {
+                providerService.getProviderToken(true);
+            }
+        }
+        return modelAndView;
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br></div></div><p>微信token 自动刷新处理思路也是如此，关键点在于：</p> <ol><li>找到请求微信（企业微信）api,需要token（获取ticket,etc）的地方，分析可能会出现什么问题</li> <li>制造条件复现出该问题，找到对应的 错误码，进行处理</li></ol> <hr> <p><a href="https://popo706.cn/" target="_blank" rel="noopener noreferrer">popo先生的博客<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <hr></div> <!----> <footer class="page-edit"><!----> <!----></footer> <!----> </main> <div class="valine-wrapper" data-v-5029e45b><div id="valine" data-v-5029e45b></div></div></div> <div class="back-to-ceiling" style="right:1rem;bottom:3rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;background-color:rgba(231, 234, 241,.5);display:none;" data-v-d0bfeaa4 data-v-d0bfeaa4><i class="iconfont reco-up" data-v-d0bfeaa4></i></div></div></div></div><div class="global-ui"></div></div>
+    <script src="/popo706.github.io/assets/js/app.1f09ed82.js" defer></script><script src="/popo706.github.io/assets/js/4.ebadb3c7.js" defer></script><script src="/popo706.github.io/assets/js/1.8ddc4372.js" defer></script><script src="/popo706.github.io/assets/js/18.46056c41.js" defer></script>
+  </body>
+</html>

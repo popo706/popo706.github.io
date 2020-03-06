@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>【Frame】jpa+mybatis 组合 数据持久化 | Popo&#39;s Blog</title>
+    <meta name="description" content="Just Do It !">
+    <link rel="icon" href="/popo706.github.io/favicons.jpg">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/popo706.github.io/assets/css/0.styles.c3ecc9e1.css" as="style"><link rel="preload" href="/popo706.github.io/assets/js/app.1f09ed82.js" as="script"><link rel="preload" href="/popo706.github.io/assets/js/4.ebadb3c7.js" as="script"><link rel="preload" href="/popo706.github.io/assets/js/1.8ddc4372.js" as="script"><link rel="preload" href="/popo706.github.io/assets/js/17.605ad2ab.js" as="script"><link rel="prefetch" href="/popo706.github.io/assets/js/10.03e7e345.js"><link rel="prefetch" href="/popo706.github.io/assets/js/11.b1571779.js"><link rel="prefetch" href="/popo706.github.io/assets/js/12.c5ab273f.js"><link rel="prefetch" href="/popo706.github.io/assets/js/13.aee4acfc.js"><link rel="prefetch" href="/popo706.github.io/assets/js/14.b1c8ed83.js"><link rel="prefetch" href="/popo706.github.io/assets/js/15.da1e2e90.js"><link rel="prefetch" href="/popo706.github.io/assets/js/16.cb8be065.js"><link rel="prefetch" href="/popo706.github.io/assets/js/18.46056c41.js"><link rel="prefetch" href="/popo706.github.io/assets/js/19.85a17289.js"><link rel="prefetch" href="/popo706.github.io/assets/js/2.a3ceb7d3.js"><link rel="prefetch" href="/popo706.github.io/assets/js/20.ba6f31e9.js"><link rel="prefetch" href="/popo706.github.io/assets/js/21.d15a32bb.js"><link rel="prefetch" href="/popo706.github.io/assets/js/22.65142762.js"><link rel="prefetch" href="/popo706.github.io/assets/js/23.994ff2b4.js"><link rel="prefetch" href="/popo706.github.io/assets/js/24.04706717.js"><link rel="prefetch" href="/popo706.github.io/assets/js/5.9e92cf3f.js"><link rel="prefetch" href="/popo706.github.io/assets/js/6.0c4fdb8b.js"><link rel="prefetch" href="/popo706.github.io/assets/js/7.9f16ea97.js"><link rel="prefetch" href="/popo706.github.io/assets/js/8.f1a96583.js"><link rel="prefetch" href="/popo706.github.io/assets/js/9.418ada84.js">
+    <link rel="stylesheet" href="/popo706.github.io/assets/css/0.styles.c3ecc9e1.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div><div class="theme-container"><div><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/popo706.github.io/" class="home-link router-link-active"><!----> <span class="site-name">Popo's Blog</span></a> <div class="links"><div class="color-picker"><a href="#" class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="theme-options"><!----> <div class="dark-theme-options toggle-option"><label for="dark-theme-toggle">Enable Dark Theme?</label> <input id="dark-theme-toggle" type="checkbox" checked="checked"></div></div></div></div> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/popo706.github.io/" class="nav-link"><i class="iconfont reco-home"></i>
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/popo706.github.io/category/技术篇.html" class="nav-link"><i class="iconfont undefined"></i>
+  技术篇
+</a></li><li class="dropdown-item"><!----> <a href="/popo706.github.io/category/文学篇.html" class="nav-link"><i class="iconfont undefined"></i>
+  文学篇
+</a></li></ul></div></div><div class="nav-item"><a href="/popo706.github.io/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/popo706.github.io/timeLine/" class="nav-link"><i class="iconfont reco-date"></i>
+  历史
+</a></div><div class="nav-item"><a href="/popo706.github.io/resume/" class="nav-link"><i class="iconfont reco-account"></i>
+  简历
+</a></div><div class="nav-item"><a href="https://github.com/popo706/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      友情链接
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://fblog.top/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont undefined"></i>
+  老冯
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/popo706.github.io/" class="nav-link"><i class="iconfont reco-home"></i>
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/popo706.github.io/category/技术篇.html" class="nav-link"><i class="iconfont undefined"></i>
+  技术篇
+</a></li><li class="dropdown-item"><!----> <a href="/popo706.github.io/category/文学篇.html" class="nav-link"><i class="iconfont undefined"></i>
+  文学篇
+</a></li></ul></div></div><div class="nav-item"><a href="/popo706.github.io/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/popo706.github.io/timeLine/" class="nav-link"><i class="iconfont reco-date"></i>
+  历史
+</a></div><div class="nav-item"><a href="/popo706.github.io/resume/" class="nav-link"><i class="iconfont reco-account"></i>
+  简历
+</a></div><div class="nav-item"><a href="https://github.com/popo706/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      友情链接
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://fblog.top/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont undefined"></i>
+  老冯
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>【Frame】jpa+mybatis 组合 数据持久化</span> <!----></p> <!----></section></li></ul> </aside> <div><main class="page reco-hide"> <div class="page-title"><h1>【Frame】jpa+mybatis 组合 数据持久化</h1> <hr> <div data-v-b53d65a4><i class="iconfont reco-account" data-v-b53d65a4><span data-v-b53d65a4>Popo's Blog</span></i> <i class="iconfont reco-date" data-v-b53d65a4><span data-v-b53d65a4>6/17/2019</span></i> <span id="/popo706.github.io/tech/frame/jpa+mybatis.html" data-flag-title="Your Article Title" class="leancloud-visitors" data-v-2e99e05a data-v-b53d65a4><i class="iconfont reco-eye" style="margin-right: .5rem" data-v-2e99e05a></i> <a class="leancloud-visitors-count" style="font-size:.9rem;font-weight:normal;color:#999;" data-v-2e99e05a></a></span> <i class="iconfont reco-tag tags" data-v-b53d65a4><span class="tag-item" data-v-b53d65a4>
+      Jpa
+    </span><span class="tag-item" data-v-b53d65a4>
+      Mybatis
+    </span><span class="tag-item" data-v-b53d65a4>
+      MySql
+    </span></i></div></div> <div class="content__default"><blockquote><p>背景：公司技术框架为 spring boot +jpa，jpa 可以处理正常的 业务，但是对于复杂的统计业务（尤其涉及对多个<a href="https://tongtsewow.gitbooks.io/tongtsesddd/%E7%AC%AC10%E7%AB%A0-%E8%81%9A%E5%90%88.html" target="_blank" rel="noopener noreferrer">聚合<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>的复杂业务），jpa 过于消耗性能,所以研究在 spring boot 项目中，jpa+mybatis 组合的可能性</p></blockquote> <hr> <h5 id="jpa-mybatis"><a href="#jpa-mybatis" aria-hidden="true" class="header-anchor">#</a> jpa &amp;&amp; mybatis</h5> <ul><li>jpa（Java Persistence API）：大大简化数据访问层代码的编码，无需手动维护数据的持久化，是面向对象的</li> <li>mybatis：支持定制化 SQL、存储过程以及高级映射，是面向关系的</li></ul> <hr> <p><a href="https://github.com/popo706/demo-jpa-mybatis" target="_blank" rel="noopener noreferrer">jpa+mybatis 组合 demo实例<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <h3 id="实战"><a href="#实战" aria-hidden="true" class="header-anchor">#</a> 实战</h3> <p>分页查询用户职位信息  业务需求如下图：
+<img src="/images/tech/frame/position_info.png" alt="需求效果" title="需求效果图"></p> <pre><code>入参查询条件涉及聚合：user,position,dept
+出参数据来源涉及聚合：user,position,dept,admin,userLastLoginRec
+</code></pre> <h4 id="jpa-实现代码"><a href="#jpa-实现代码" aria-hidden="true" class="header-anchor">#</a> jpa 实现代码</h4> <div class="language- line-numbers-mode"><pre class="language-text"><code>     private Page&lt;StatisticsUserDTO&gt; queryStatisticsUserInfo(StatisticsSearchDTO searchDTO, Pageable pageable, boolean isPaging, Long tenantId) {
+          QUser user = QUser.user;
+          QPosition position = QPosition.position;
+          BooleanExpression expression = user.id.isNotNull();
+          BooleanExpression positionExpression = position.id.isNotNull();
+
+          positionExpression = positionExpression.and(position.tenantId.eq(tenantId));
+          if (searchDTO != null) {
+              if (searchDTO.getGroupIds() != null &amp;&amp; searchDTO.getGroupIds().length &gt; 0) {
+                  positionExpression = positionExpression.and(position.deptId.in((Number[]) searchDTO.getGroupIds()));
+              }
+              if (!StringUtils.isEmpty(searchDTO.getJobCode())) {
+                  positionExpression = positionExpression.and(position.jobCode.contains(searchDTO.getJobCode()));
+              }
+              if (!StringUtils.isEmpty(searchDTO.getRealName())) {
+                  expression = expression.and(user.realName.contains(searchDTO.getRealName()));
+              }
+              if (!StringUtils.isEmpty(searchDTO.getPhoneNum())) {
+                  expression = expression.and(user.phoneNum.contains(searchDTO.getPhoneNum()));
+              }
+  
+              List&lt;PositionClassificationRec&gt; attrs = searchDTO.getAttrs();
+              //根据职位筛选信息
+              if (!CollectionUtils.isEmpty(attrs)) {
+                  for (PositionClassificationRec attr : attrs) {
+                      List&lt;Long&gt; positionIds = positionRepository.findAllByAttrsOptions(attr.getClassificationId(), attr.getOptions())
+                              .stream().map(Position::getId).collect(Collectors.toList());
+                      positionExpression = positionExpression.and(position.id.in(QueryPlanCacheOptimizeUtil.convertList(positionIds)));
+                  }
+              }
+          }
+  
+          Iterable&lt;Position&gt; positions = positionRepository.findAll(positionExpression);
+          List&lt;Long&gt; userIds = new ArrayList&lt;&gt;();
+          positions.forEach(position1 -&gt; userIds.add(position1.getUserId()));
+  
+          expression = expression.and(user.id.in(userIds));
+  
+          Page&lt;User&gt; users;
+          if (isPaging) {
+              users = userRepository.findAll(expression, pageable);
+          } else {
+              Pageable pageable1 = null;
+              users = userRepository.findAll(expression, pageable1);
+          }
+  
+          Set&lt;Long&gt; newUserIds = users.getContent().stream().map(AbstractEntity::getId).collect(Collectors.toSet());
+          List&lt;Position&gt; positionsList = positionRepository.findAllByUserIdIn(QueryPlanCacheOptimizeUtil.convertList(newUserIds));
+          Map&lt;Long, Position&gt; positionMap = positionsList.stream().collect(Collectors.toMap(Position::getUserId, c -&gt; c));
+          Set&lt;Long&gt; deptIds = positionsList.stream().map(Position::getDeptId).collect(Collectors.toSet());
+          Map&lt;Long, Dept&gt; deptMap = deptRepository.findAll(deptIds).stream().collect(Collectors.toMap(Dept::getId, c -&gt; c));
+          Map&lt;Long, Long&gt; userLastLoginMap = userLastLoginRecRepository.findAllByUserIdIn(newUserIds)
+                  .stream().collect(Collectors.toMap(UserLastLoginRec::getUserId, UserLastLoginRec::getLastLogin));
+  
+          return users.map(user1 -&gt; {
+              Position curPosition = positionMap.get(user1.getId());
+              Dept curDept = deptMap.get(curPosition.getDeptId());
+              return new StatisticsUserDTO(curPosition, curDept.getName(), user1.getRealName(), user1.getPhoneNum(), userLastLoginMap.get(user1.getId()), user1.getStartWorkTime());
+          });
+      }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br></div></div><p>disadvantage:</p> <ul><li>消耗不必要的时间和性能</li> <li>难以在现有的框架上进行量级优化</li> <li>代码复杂度高，维护不方便</li> <li>jpa 无法控制生成的sql,OneToMany 导致生成的sql 过度，消耗 datasource 连接数
+（此处 jpa 生成的 sql 数量 成百上千条）</li></ul> <h4 id="mybatis-实现代码"><a href="#mybatis-实现代码" aria-hidden="true" class="header-anchor">#</a> mybatis 实现代码</h4> <div class="language- line-numbers-mode"><pre class="language-text"><code>    &lt;resultMap id=&quot;PositionStatisticsInfoMap&quot; type=&quot;ky.edu.server.tenant.domain.model.PositionStatisticsInfo&quot;&gt;
+            &lt;result property=&quot;deptName&quot; column=&quot;deptName&quot;&gt;&lt;/result&gt;
+            &lt;result property=&quot;phoneNum&quot; column=&quot;phoneNum&quot;&gt;&lt;/result&gt;
+            &lt;result property=&quot;realName&quot; column=&quot;realName&quot;&gt;&lt;/result&gt;
+            &lt;result property=&quot;lastLogin&quot; column=&quot;lastLogin&quot;&gt;&lt;/result&gt;
+            &lt;result property=&quot;startWorkTime&quot; column=&quot;startWorkTime&quot;&gt;&lt;/result&gt;
+            &lt;association property=&quot;position&quot; javaType=&quot;ky.edu.server.tenant.domain.model.Position&quot;&gt;
+                &lt;id property=&quot;id&quot; column=&quot;id&quot;&gt;&lt;/id&gt;
+                &lt;result property=&quot;createTime&quot; column=&quot;createTime&quot;/&gt;
+                &lt;result property=&quot;lastModified&quot; column=&quot;lastModified&quot;/&gt;
+                &lt;result property=&quot;jobCode&quot; column=&quot;jobCode&quot;/&gt;
+                &lt;result property=&quot;tenantId&quot; column=&quot;tenantId&quot;/&gt;
+                &lt;result property=&quot;deptId&quot; column=&quot;deptId&quot;/&gt;
+                &lt;result property=&quot;accountId&quot; column=&quot;accountId&quot;/&gt;
+                &lt;result property=&quot;userId&quot; column=&quot;userId&quot;/&gt;
+                &lt;result property=&quot;admin&quot; column=&quot;admin&quot;/&gt;
+                &lt;collection property=&quot;internalClassRecs&quot; column=&quot;id&quot; select=&quot;getInternalClassRecs&quot;&gt;
+                    &lt;result property=&quot;classificationId&quot; column=&quot;classificationId&quot;&gt;&lt;/result&gt;
+                    &lt;result property=&quot;optionId&quot; column=&quot;optionId&quot;&gt;&lt;/result&gt;
+                &lt;/collection&gt;
+            &lt;/association&gt;
+        &lt;/resultMap&gt;
+        
+        &lt;select id=&quot;findStatisticsPositionInfos&quot; resultMap=&quot;PositionStatisticsInfoMap&quot;&gt;
+                select distinct
+                up.id,d.deptName,ru.phoneNum,ru.realName,ullr.lastLogin,ru.startWorkTime,up.id,up.createTime,up.lastModified,up.jobCode,up.tenantId,
+                up.deptId,up.accountId,up.userId,up.admin
+                from user_position up
+                inner join reg_user ru on ru.accountId=up.accountId
+                left join position_class_rec pcr on up.id=pcr.positionId
+                inner join dept d on up.deptId=d.id
+                left join user_last_login_rec ullr on ullr.userId=up.userId
+                where up.tenantId= #{tenantId}
+                &lt;if test=&quot;statisticsSearch.realName !=null and statisticsSearch.realName != '' &quot;&gt;
+                    and ru.realName REGEXP #{statisticsSearch.realName}
+                &lt;/if&gt;
+                &lt;if test=&quot;statisticsSearch.phoneNum !=null and  statisticsSearch.phoneNum != '' &quot;&gt;
+                    and ru.phoneNum REGEXP #{statisticsSearch.phoneNum}
+                &lt;/if&gt;
+                &lt;if test=&quot;statisticsSearch.jobCode !=null and statisticsSearch.jobCode != '' &quot;&gt;
+                    and up.jobCode REGEXP #{statisticsSearch.jobCode}
+                &lt;/if&gt;
+                &lt;if test=&quot;statisticsSearch.groupIds !=null and statisticsSearch.groupIds.size !=0&quot;&gt;
+                    AND up.deptId in
+                    (&lt;foreach collection=&quot;statisticsSearch.groupIds&quot; item=&quot;groupId&quot; separator=&quot;,&quot;&gt;#{groupId}&lt;/foreach&gt;)
+                &lt;/if&gt;
+                &lt;if test=&quot;statisticsSearch.internalClassRecs !=null and statisticsSearch.internalClassRecs.size !=0&quot;&gt;
+                    AND (pcr.classificationId,pcr.optionId) in
+                    (&lt;foreach collection=&quot;statisticsSearch.internalClassRecs&quot; item=&quot;attr&quot; separator=&quot;,&quot;&gt;
+                    (#{attr.classificationId},#{attr.optionId})&lt;/foreach&gt;)
+                &lt;/if&gt;
+                order by ru.lastModified desc
+                &lt;if test=&quot;offset !=null and perPage!=null&quot;&gt;
+                    limit #{offset}, #{perPage}
+                &lt;/if&gt;
+            &lt;/select&gt;
+            
+            &lt;select id=&quot;getInternalClassRecs&quot; resultType=&quot;ky.edu.server.common.domain.model.InternalClassRec&quot;&gt;
+                    SELECT classificationId,optionId  FROM position_class_rec
+                    WHERE positionId = #{id}
+                &lt;/select&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br></div></div><p>advantage:</p> <ul><li>根据复杂统计业务建模，在数据库 层面 只查询有用数据</li> <li>降低 datasource 连接数
+（此处sql 数量 近 百条，OneToMany 关系 映射 产生的 过度sql 仍然没有解决）</li></ul> <h4 id="mybatis-实现代码（降低-datasource-连接数版）"><a href="#mybatis-实现代码（降低-datasource-连接数版）" aria-hidden="true" class="header-anchor">#</a> mybatis 实现代码（降低 datasource 连接数版）</h4> <p>映射关系map 去除 internalClassRecs</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>    &lt;!--&lt;collection property=&quot;internalClassRecs&quot; column=&quot;id&quot; select=&quot;getInternalClassRecs&quot;&gt;--&gt;
+                        &lt;!--&lt;result property=&quot;classificationId&quot; column=&quot;classificationId&quot;&gt;&lt;/result&gt;--&gt;
+                        &lt;!--&lt;result property=&quot;optionId&quot; column=&quot;optionId&quot;&gt;&lt;/result&gt;--&gt;
+        &lt;!--&lt;/collection&gt;--&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>增加 批量查询 internalClassRecs 方法：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>    &lt;select id=&quot;queryInternalClassRecsByPositionIds&quot; resultType=&quot;ky.edu.server.common.domain.model.InternalClassRec&quot;&gt;
+            SELECT classificationId,optionId,positionId  FROM position_class_rec
+            WHERE positionId in
+            (&lt;foreach collection=&quot;positionIds&quot; item=&quot;positionId&quot; separator=&quot;,&quot;&gt;#{positionId}&lt;/foreach&gt;)
+        &lt;/select&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>然后 业务层面进行数据组装：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>    List&lt;PositionStatisticsInfo&gt; positionInfos = iPositionDao.findStatisticsPositionInfos(searchDTO, tenantId, (long) offset, (long) size);
+    
+            if(CollectionUtils.isEmpty(positionInfos)){
+                return new PageImpl&lt;&gt;(positionInfos, pageRequest, 0);
+            }
+        
+            Set&lt;Long&gt; positionIds = new HashSet&lt;&gt;();
+            positionInfos.forEach(positionStatisticsInfo -&gt; positionIds.add(positionStatisticsInfo.getPosition().getId()));
+    
+            List&lt;InternalClassRec&gt; internalClassRecs = iPositionDao.queryInternalClassRecsByPositionIds(positionIds);
+            Map&lt;Long, Set&lt;InternalClassRec&gt;&gt; internalClassRecMap = MapAssembler.markInternalClassRecAsPositionIdKey(internalClassRecs);
+    
+            Position position;
+            for (PositionStatisticsInfo positionInfo : positionInfos) {
+                position = positionInfo.getPosition();
+                position.initAttrs(internalClassRecMap.get(position.getId()));
+            }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><p>此方案 查询数据 sql 数量只有两条；</p> <h3 id="优化效果（源数据相同，查询条件相同，查询结果一致）"><a href="#优化效果（源数据相同，查询条件相同，查询结果一致）" aria-hidden="true" class="header-anchor">#</a> 优化效果（源数据相同，查询条件相同，查询结果一致）</h3> <ul><li>jpa 耗时 约 4.5s</li> <li>mybatis 耗时 0.27s</li></ul> <p>😏 日常数据的增删改查 推荐jpa,无需手动进行数据就持久化，复杂统计业务 推荐 mybatis,根据 需求 设计 模型，查询需要的数据，提示系统响应速度，降低性能消耗</p> <hr> <p><a href="https://popo706.cn/" target="_blank" rel="noopener noreferrer">popo先生的博客<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <hr></div> <!----> <footer class="page-edit"><!----> <!----></footer> <!----> </main> <div class="valine-wrapper" data-v-5029e45b><div id="valine" data-v-5029e45b></div></div></div> <div class="back-to-ceiling" style="right:1rem;bottom:3rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;background-color:rgba(231, 234, 241,.5);display:none;" data-v-d0bfeaa4 data-v-d0bfeaa4><i class="iconfont reco-up" data-v-d0bfeaa4></i></div></div></div></div><div class="global-ui"></div></div>
+    <script src="/popo706.github.io/assets/js/app.1f09ed82.js" defer></script><script src="/popo706.github.io/assets/js/4.ebadb3c7.js" defer></script><script src="/popo706.github.io/assets/js/1.8ddc4372.js" defer></script><script src="/popo706.github.io/assets/js/17.605ad2ab.js" defer></script>
+  </body>
+</html>
